@@ -3,13 +3,23 @@
 **Description:** Object Status — system status entries
 **Category:** Standard SAP Table
 **References:** 79 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/jest/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 2 fields | **Data types:** CHAR(1), NUMC(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `OBJNR` | | 🔑 | Primary key |
-| `STAT` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `INACT` | J_INACT | — | CHAR | 1 | 0 | Indicator: Status Is Inactive |
+| `CHGNR` | J_CHGNR | — | NUMC | 3 | 0 | Change number |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `MANDT` | JEST | MANDT | T000 |  | |
+| `OBJNR` | JEST | MANDT | ONR00 |  | |
+| `OBJNR` | JEST | OBJNR | ONR00 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

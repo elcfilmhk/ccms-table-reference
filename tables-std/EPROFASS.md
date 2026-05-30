@@ -3,13 +3,32 @@
 **Description:** Energy Profile Assignment — rate profile assignment
 **Category:** Standard SAP Table
 **References:** 91 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/eprofass/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 9 fields | **Data types:** CHAR(3), DATS(3), NUMC(2), TIMS(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `PROFILE` | | 🔑 | Primary key |
-| `LOGIKZW` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `DATEFROM` | E_EDMDATEFROM | — | DATS | 8 | 0 | From-Date |
+| `TIMEFROM` | E_EDMTIMEFROM | — | TIMS | 6 | 0 | From-time |
+| `PROFILE` | E_PROFILE | EPROFHEAD | NUMC | 18 | 0 | Number of EDM Profile |
+| `CONTEXTCATEGORY` | E_CONTEXTCATEGORY | EEDMPROFCONTEXT | NUMC | 2 | 0 | Context Category for Profile Allocation Role |
+| `PROFROLECONTEXT` | PROFROLECONTEXT | — | CHAR | 22 | 0 | Context for Profile Allocation |
+| `ERDAT` | ERDAT | — | DATS | 8 | 0 | Date on Which Record Was Created |
+| `ERNAM` | ERNAM | — | CHAR | 12 | 0 | Name of Person who Created the Object |
+| `AEDAT` | AEDAT | — | DATS | 8 | 0 | Changed On |
+| `AENAM` | AENAM | — | CHAR | 12 | 0 | Name of Person Who Changed Object |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `CONTEXTCATEGORY` | EPROFASS | CONTEXTCATEGORY | EEDMPROFCONTEXT |  | |
+| `PROFILE` | EPROFASS | MANDT | EPROFHEAD |  | |
+| `PROFILE` | EPROFASS | PROFILE | EPROFHEAD |  | |
+| `PROFROLE` | EPROFASS | MANDT | EPROFASSROLE |  | |
+| `PROFROLE` | EPROFASS | PROFROLE | EPROFASSROLE |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

@@ -3,12 +3,62 @@
 **Description:** CA Line Item — FI-CA document line items
 **Category:** Standard SAP Table
 **References:** 46 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/fkkmaze/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 28 fields | **Data types:** CHAR(19), CUKY(1), CURR(2), DATS(3), DEC(1), NUMC(2)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `OPBEL` | | 🔑 | Primary key |
+`BUKRS`
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `BUKRS` | BUKRS | — | CHAR | 4 | 0 | Company Code |
+| `WAERS` | WAERS | TCURC | CUKY | 5 | 0 | Currency Key |
+| `MBETM` | MBETM_KK | — | CURR | 13 | 2 | Dunned amount in transaction currency |
+| `MBETH` | UNUSED_KK | — | DEC | 13 | 2 | Not used (formerly dunned amount in local currency) |
+| `FAEDN` | FAEDN_KK | — | DATS | 8 | 0 | Due date for net payment |
+| `MINTM` | MINTM_KK | — | CURR | 13 | 2 | Dunning interest in transaction currency |
+| `MAHNS` | MAHNS_KK | TFK047B | NUMC | 2 | 0 | Dunning Level |
+| `MSTYP` | MSTYP_KK | TFK047G | CHAR | 2 | 0 | Dunning Level Category |
+| `MAHNN` | MAHNN_KK | TFK047B | NUMC | 2 | 0 | New dunning level |
+| `MANSP` | MANSP_KK | TFK047S | CHAR | 1 | 0 | Dunning Lock Reason |
+| `XMFAK` | XMFAK_KK | — | CHAR | 1 | 0 | Dunning Level is Optional |
+| `XMSUS` | XMSUS_KK | — | CHAR | 1 | 0 | Entry in Dunning History only Technically Conditional |
+| `XMSTO` | XMSTO_KK | — | CHAR | 1 | 0 | Dunning Notice Reversed |
+| `XINFO` | XINFO_KK | — | CHAR | 1 | 0 | Information: Item Not Due for Dunning |
+| `MDRKD` | MDRKD_KK | — | DATS | 8 | 0 | Execution Date of Dunning Notice |
+| `STAKZ` | STAKZ_KK | — | CHAR | 1 | 0 | Type of statistical item |
+| `XMVKT` | XMVKT_KK | — | CHAR | 1 | 0 | Contract Account Not Unique |
+| `VTREF` | VTREF_KK | — | CHAR | 20 | 0 | Reference Specifications from Contract |
+| `SUBAP` | SUBAP_KK | — | CHAR | 1 | 0 | Subapplication in Contract Accounts Receivable and Payable |
+| `SEGMENT` | SEGMT_KK | — | CHAR | 10 | 0 | Segment for Segmental Reporting |
+| `PRCTR` | PRCTR | — | CHAR | 10 | 0 | Profit Center |
+| `MAHNV` | MAHNV_KK | — | CHAR | 2 | 0 | Dunning Procedure |
+| `AUSDT` | AUSDT_KK | — | DATS | 8 | 0 | Date of issue |
+| `SPART` | SPART_KK | — | CHAR | 2 | 0 | Division |
+| `XTAUS` | XTAUS_KK | — | CHAR | 1 | 0 | Item Split |
+| `MOPUPZ` | MOPUPZ_KK | — | CHAR | 3 | 0 | Maximum Subitem Number for Creation of Table Lines |
+| `HIGHERDL` | HIGHERDL_KK | — | CHAR | 1 | 0 | Item has higher dunning level than dunning notice |
+| `DALIN` | DALIN_KK | — | CHAR | 1 | 0 | Dunning Item Created by Dunning Activity Run |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `MAHNN` | FKKMAZE | MAHNV | TFK047B |  | |
+| `MAHNN` | FKKMAZE | MAHNN | TFK047B |  | |
+| `MAHNN` | FKKMAZE | MANDT | TFK047B |  | |
+| `MAHNS` | FKKMAZE | MANDT | TFK047B |  | |
+| `MAHNS` | FKKMAZE | MAHNV | TFK047B |  | |
+| `MAHNS` | FKKMAZE | MAHNS | TFK047B |  | |
+| `MANDT` | FKKMAZE | MANDT | T000 |  | |
+| `MANSP` | FKKMAZE | MANDT | TFK047S |  | |
+| `MANSP` | FKKMAZE | MANSP | TFK047S |  | |
+| `MSTYP` | FKKMAZE | MANDT | TFK047G |  | |
+| `MSTYP` | FKKMAZE | MSTYP | TFK047G |  | |
+| `OPBEL` | FKKMAZE | MANDT | DFKKKO |  | |
+| `OPBEL` | FKKMAZE | OPBEL | DFKKKO |  | |
+| `WAERS` | FKKMAZE | MANDT | TCURC |  | |
+| `WAERS` | FKKMAZE | WAERS | TCURC |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

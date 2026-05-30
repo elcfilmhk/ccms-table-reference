@@ -3,16 +3,34 @@
 **Description:** Change Document Position — change log line items
 **Category:** Standard SAP Table
 **References:** 196 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/cdpos/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 7 fields | **Data types:** CHAR(3), CUKY(2), UNIT(2)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `OBJCLAS` | | 🔑 | Primary key |
-| `OBJID` | | 🔑 | Primary key |
-| `CHANGENR` | | 🔑 | Primary key |
-| `TABNAME` | | 🔑 | Primary key |
-| `FNAME` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `TEXT_CASE` | CDXFELD | — | CHAR | 1 | 0 | Flag: X=Text change |
+| `UNIT_OLD` | CDUNIT | — | UNIT | 3 | 0 | Change documents, unit referenced |
+| `UNIT_NEW` | CDUNIT | — | UNIT | 3 | 0 | Change documents, unit referenced |
+| `CUKY_OLD` | CDCUKY | TCURC | CUKY | 5 | 0 | Change documents, referenced currency |
+| `CUKY_NEW` | CDCUKY | TCURC | CUKY | 5 | 0 | Change documents, referenced currency |
+| `VALUE_NEW` | CDFLDVALN | — | CHAR | 254 | 0 | New contents of changed field |
+| `VALUE_OLD` | CDFLDVALO | — | CHAR | 254 | 0 | Old contents of changed field |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `CHANGENR` | CDPOS | MANDANT | CDHDR |  | |
+| `CHANGENR` | CDPOS | OBJECTCLAS | CDHDR |  | |
+| `CHANGENR` | CDPOS | OBJECTID | CDHDR |  | |
+| `CHANGENR` | CDPOS | CHANGENR | CDHDR |  | |
+| `CUKY_NEW` | CDPOS | CUKY_NEW | TCURC |  | |
+| `CUKY_NEW` | CDPOS | MANDANT | TCURC |  | |
+| `CUKY_OLD` | CDPOS | MANDANT | TCURC |  | |
+| `CUKY_OLD` | CDPOS | CUKY_OLD | TCURC |  | |
+| `MANDANT` | CDPOS | MANDANT | T000 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

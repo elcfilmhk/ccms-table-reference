@@ -3,13 +3,29 @@
 **Description:** Authorization Group Users — role assignments
 **Category:** Standard SAP Table
 **References:** 14 SELECT statements across 12 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/agr_users/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 6 fields | **Data types:** CHAR(3), DATS(1), DEC(1), TIMS(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `UNAME` | | 🔑 | Primary key |
-| `AGR_NAME` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `EXCLUDE` | AGR_EXCL | — | CHAR | 1 | 0 | Exclusive |
+| `CHANGE_DAT` | MENU_DATE | — | DATS | 8 | 0 | Date of menu generation |
+| `CHANGE_TIM` | MENU_TIME | — | TIMS | 6 | 0 | Time when the menu was generated last |
+| `CHANGE_TST` | RSTIMESTMP | — | DEC | 15 | 0 | UTC Time Stamp in Short Form (YYYYMMDDhhmmss) |
+| `ORG_FLAG` | AGR_ORG | — | CHAR | 1 | 0 | Flag: Assignment Comes From HR Organization Management |
+| `COL_FLAG` | AGR_COL | — | CHAR | 1 | 0 | Flag: Assignment from composite role |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `AGR_NAME` | AGR_USERS | MANDT | AGR_DEFINE |  | |
+| `AGR_NAME` | AGR_USERS | AGR_NAME | AGR_DEFINE |  | |
+| `MANDT` | AGR_USERS | MANDT | T000 |  | |
+| `UNAME` | AGR_USERS | MANDT | USR02 |  | |
+| `UNAME` | AGR_USERS | UNAME | USR02 |  | |
 
 ## Detected Join Fields
 _No join fields detected in CCMS code_

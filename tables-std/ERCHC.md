@@ -3,12 +3,26 @@
 **Description:** Billing Document Line — line items for billing doc
 **Category:** Standard SAP Table
 **References:** 74 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/erchc/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 12 fields | **Data types:** CHAR(8), DATS(4)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `OPBEL` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `OPBEL` | E_PRINTDOC | — | CHAR | 12 | 0 | Number of print document |
+| `CPUDT` | CPUDT | — | DATS | 8 | 0 | Day On Which Accounting Document Was Entered |
+| `BUDAT` | BUDAT | — | DATS | 8 | 0 | Posting Date in the Document |
+| `INTOPBEL` | INTOPBEL | — | CHAR | 12 | 0 | Number of Print Document Used to Reverse Document |
+| `INTCPUDT` | INTCPUDT | — | DATS | 8 | 0 | Date on which invoicing reversal was entered |
+| `INTBUDAT` | INTBUDAT | — | DATS | 8 | 0 | Posting date of invoicing reversal |
+| `TOBRELEASD` | TOBRELEASD | — | CHAR | 1 | 0 | Indicator: document not released yet |
+| `SIMULATED` | SIMULATED | — | CHAR | 1 | 0 | Indicator: invoicing generates a simulated document |
+| `INVOICED` | INVOICED | — | CHAR | 1 | 0 | Indicator: document posted |
+| `SPCANC` | SPCANC | — | CHAR | 1 | 0 | Adjustment Reversal |
+| `STATUPD` | STATUPD | — | CHAR | 1 | 0 | Document Entered in Sales Statistics |
+| `STATUPD_CANC` | STATUPD_CANC | — | CHAR | 1 | 0 | Reversal Document Entered in Sales Statistics |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_
