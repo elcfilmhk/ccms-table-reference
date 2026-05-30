@@ -3,13 +3,28 @@
 **Description:** BP Credit Card — credit card info
 **Category:** Standard SAP Table
 **References:** 68 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/but0cc/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 6 fields | **Data types:** CHAR(6)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `CLIENT` | | 🔑 | Primary key |
-| `PARTNER` | | 🔑 | Primary key |
-| `BANKCT` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `CCINS` | CC_INSTITUTE | TB033 | CHAR | 4 | 0 | Payment card type |
+| `CCNUM` | BU_CCNUM | — | CHAR | 25 | 0 | Payment Cards: Card Number |
+| `CCDEF` | BU_CCDEF | — | CHAR | 1 | 0 | BP: Standard Payment Card |
+| `CCACCNAME` | BU_CREDITCNAME | — | CHAR | 40 | 0 | Description of Credit Card Details |
+| `CARD_GUID` | BU_CARD_GUID_MAP | — | CHAR | 32 | 0 | Mapping DTEL for Payment Card GUID |
+| `BP_EEW_BUT0CC` | DUMMY | — | CHAR | 1 | 0 | Dummy function in length 1 |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `CCINS` | BUT0CC | MANDT | TB033 |  | |
+| `CCINS` | BUT0CC | CCINS | TB033 |  | |
+| `PARTNER` | BUT0CC | MANDT | BUT000 |  | |
+| `PARTNER` | BUT0CC | PARTNER | BUT000 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

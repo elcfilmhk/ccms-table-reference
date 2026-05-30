@@ -3,12 +3,26 @@
 **Description:** Connection Object — premise connection object
 **Category:** Standard SAP Table
 **References:** 79 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/ehauisu/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 5 fields | **Data types:** CHAR(4), RAW(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `HAUS` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `COUNC` | COUNC | — | CHAR | 3 | 0 | County Code |
+| `REGIOGROUP` | REGIOGROUP | — | CHAR | 8 | 0 | Regional structure grouping |
+| `REGPOLIT` | REGPOLIT | — | CHAR | 8 | 0 | Political regional structure element |
+| `REGIOGROUP_PERM` | REGIOGROUP_PERMIT | — | CHAR | 8 | 0 | Regional structure group for supply permit processing |
+| `CRM_GUID` | EHAU_GUID | — | RAW | 16 | 0 | CRM GUID of Connection Object |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `HAUS` | EHAUISU | MANDT | IFLOT |  | |
+| `HAUS` | EHAUISU | HAUS | IFLOT |  | |
+| `MANDT` | EHAUISU | MANDT | T000 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

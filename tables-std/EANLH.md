@@ -3,12 +3,69 @@
 **Description:** Installation History — installation validity periods
 **Category:** Standard SAP Table
 **References:** 560 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/eanlh/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 23 fields | **Data types:** CHAR(22), DATS(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `ANLAGE` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `AB` | ABZEITSCH | — | DATS | 8 | 0 | Date from which time slice is valid |
+| `TARIFTYP` | TARIFTYP_ANL | ETTA | CHAR | 10 | 0 | Rate category |
+| `ANLSTAT` | ANLSTAT | — | CHAR | 2 | 0 | Installation Status |
+| `KONZBEFR` | KONZBEFR | — | CHAR | 1 | 0 | Exempt from franchise fee |
+| `PAUSCHAL` | E_PAUSCHAL | — | CHAR | 1 | 0 | Device allocation is not possible |
+| `BRANCHE` | BU_IND_SECTOR | TB038A | CHAR | 10 | 0 | Industry |
+| `AKLASSE` | AKLASSE | EAKLASSE | CHAR | 4 | 0 | Billing class |
+| `ABLEINH` | ABLEINHEIT | TE422 | CHAR | 8 | 0 | Meter Reading Unit |
+| `TEMP_AREA` | TEMP_AREA | TE307 | CHAR | 8 | 0 | Temperature area |
+| `KONZVER` | KONZVER | — | CHAR | 10 | 0 | Franchise contract |
+| `BILLING_PARTY` | BILLING_PARTY | — | CHAR | 10 | 0 | Service Provider that Bills the Installation |
+| `INVOICING_PARTY` | INVOICING_PARTY | — | CHAR | 10 | 0 | Service Provider That Invoices the Contract |
+| `PROV_LAST_RES` | PROV_LAST_RESSORT | — | CHAR | 10 | 0 | Obligation to Supply |
+| `MAININST` | MAININST | EANL | CHAR | 10 | 0 | Key of Primary Installation |
+| `INSTROLE` | INSTROLE | TE673 | CHAR | 4 | 0 | Role of an Installation Within the Installation Group |
+| `INSTGRTYPE` | INSTGRTYPE | TE672 | CHAR | 4 | 0 | Grouping Type for Installation Group |
+| `ISTYPE` | BU_ISTYPE | TB038 | CHAR | 4 | 0 | Industry System |
+| `HIGHLEVINST` | HIGHLEVINST | EANL | CHAR | 10 | 0 | Higher-Level Installation |
+| `SCHEMANR` | SCHEMANR | ESCH | CHAR | 10 | 0 | Number of the billing schema |
+| `HOCHART` | HOCHART | — | CHAR | 1 | 0 | Type of extrapolation in unbilled revenue reporting |
+| `VPERGRUP` | VPERGRUP | — | CHAR | 4 | 0 | Previous period control group |
+| `PRUEFGR` | PRUEFGR | TE413 | CHAR | 4 | 0 | Validation group for dependent validations |
+| `ABSSTEU` | ABSSTEU | — | CHAR | 1 | 0 | Budget billing control |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `ABLEINH` | EANLH | MANDT | TE422 |  | |
+| `ABLEINH` | EANLH | ABLEINH | TE422 |  | |
+| `AKLASSE` | EANLH | MANDT | EAKLASSE |  | |
+| `AKLASSE` | EANLH | AKLASSE | EAKLASSE |  | |
+| `ANLAGE` | EANLH | MANDT | EANL |  | |
+| `ANLAGE` | EANLH | ANLAGE | EANL |  | |
+| `BRANCHE` | EANLH | ISTYPE | TB038A |  | |
+| `BRANCHE` | EANLH | BRANCHE | TB038A |  | |
+| `BRANCHE` | SYST | MANDT | TB038A |  | |
+| `HIGHLEVINST` | SYST | MANDT | EANL |  | |
+| `HIGHLEVINST` | EANLH | HIGHLEVINST | EANL |  | |
+| `INSTGRTYPE` | SYST | MANDT | TE672 |  | |
+| `INSTGRTYPE` | EANLH | INSTGRTYPE | TE672 |  | |
+| `INSTROLE` | EANLH | INSTROLE | TE673 |  | |
+| `INSTROLE` | SYST | MANDT | TE673 |  | |
+| `ISTYPE` | SYST | MANDT | TB038 |  | |
+| `ISTYPE` | EANLH | ISTYPE | TB038 |  | |
+| `MAININST` | SYST | MANDT | EANL |  | |
+| `MAININST` | EANLH | MAININST | EANL |  | |
+| `MANDT` | EANLH | MANDT | T000 |  | |
+| `PRUEFGR` | * |  | TE413 |  | |
+| `PRUEFGR` | EANLH | PRUEFGR | TE413 |  | |
+| `SCHEMANR` | * |  | ESCH |  | |
+| `SCHEMANR` | EANLH | SCHEMANR | ESCH |  | |
+| `TARIFTYP` | EANLH | TARIFTYP | ETTA |  | |
+| `TARIFTYP` | EANLH | MANDT | ETTA |  | |
+| `TEMP_AREA` | EANLH | MANDT | TE307 |  | |
+| `TEMP_AREA` | EANLH | TEMP_AREA | TE307 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

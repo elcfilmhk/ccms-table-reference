@@ -3,12 +3,15 @@
 **Description:** Payment Request — payment request record
 **Category:** Standard SAP Table
 **References:** 12 SELECT statements across 7 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/dfkkrd/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 1 fields | **Data types:** CURR(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `KEYZ1` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `BETRD` | BETRD_KK | — | CURR | 13 | 2 | Rounding amount of contract account |
 
 ## Detected Join Fields
 _No join fields detected in CCMS code_

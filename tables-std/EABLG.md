@@ -3,12 +3,26 @@
 **Description:** Installation Register History — historical register records
 **Category:** Standard SAP Table
 **References:** 216 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/eablg/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 4 fields | **Data types:** CHAR(2), DATS(2)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `ABLBELNR` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `ABRDATS` | ABRDATS | — | DATS | 8 | 0 | Scheduled Billing Date |
+| `ABLEINH` | ABLEINH | — | CHAR | 8 | 0 | Meter reading unit |
+| `ADATSOLL` | ADATSOLL | — | DATS | 8 | 0 | Scheduled meter reading date |
+| `UNTERDR` | UNTERDR | — | CHAR | 1 | 0 | Suppression indicator |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `ABLESGR` | EABLG | ABLESGR | TE609 |  | |
+| `ANLAGE` | EABLG | MANDT | EANL |  | |
+| `ANLAGE` | EABLG | ANLAGE | EANL |  | |
+| `MANDT` | EABLG | MANDT | T000 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

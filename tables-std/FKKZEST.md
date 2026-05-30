@@ -3,12 +3,25 @@
 **Description:** Billing Index Summary — billing summary by CA
 **Category:** Standard SAP Table
 **References:** 412 SELECT statements across 15 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/fkkzest/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 11 fields | **Data types:** CHAR(4), DATS(1), INT4(4), NUMC(1), TIMS(1)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `RUNID` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `FNAME` | FNAMEZE_KK | — | CHAR | 250 | 0 | File name (payment lot transfer) |
+| `UNAME` | UNAME | — | CHAR | 12 | 0 | User Name |
+| `DATUM` | DATUMW | — | DATS | 8 | 0 | Date |
+| `UZEIT` | UZEIT | — | TIMS | 6 | 0 | Time |
+| `ERRANZ` | ERRZE_KK | — | INT4 | 10 | 0 | Number of Errors in Payment Lot Transfer |
+| `ECLUST` | ECLUST_KK | — | NUMC | 5 | 0 | Last Error Cluster |
+| `ZSFIN` | SFIN_KK | — | INT4 | 10 | 0 | Last payment lot |
+| `POSFIN` | PFIN_KK | — | INT4 | 10 | 0 | Last payment lot item |
+| `LINFIN` | LFIN_KK | — | INT4 | 10 | 0 | Edited to Line |
+| `XFIN` | XFINBI_KK | — | CHAR | 1 | 0 | File done |
+| `XCLDEL` | XCLDEL_KK | — | CHAR | 1 | 0 | Cluster was deleted |
 
 ## Detected Join Fields
 _No join fields detected in CCMS code_

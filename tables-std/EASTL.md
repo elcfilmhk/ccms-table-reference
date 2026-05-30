@@ -3,13 +3,30 @@
 **Description:** Installation Rate Schedule — rate tariff assignment
 **Category:** Standard SAP Table
 **References:** 182 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/eastl/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 10 fields | **Data types:** CHAR(7), DATS(3)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `ANLAGE` | | 🔑 | Primary key |
-| `LOGIKNR` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `AB` | ABZEITSCH | — | DATS | 8 | 0 | Date from which time slice is valid |
+| `PREISKLA` | PREISKLA | TE431 | CHAR | 10 | 0 | Price Class |
+| `GVERRECH` | GVERRECH | — | CHAR | 1 | 0 | Pay rental price |
+| `TARIFART` | TARIFART | — | CHAR | 8 | 0 | Rate Type |
+| `KONDIGR` | KONDIGR | — | CHAR | 10 | 0 | Rate fact group |
+| `ERDAT` | ERDAT | — | DATS | 8 | 0 | Date on Which Record Was Created |
+| `ERNAM` | ERNAM | — | CHAR | 12 | 0 | Name of Person who Created the Object |
+| `AEDAT` | AEDAT | — | DATS | 8 | 0 | Changed On |
+| `AENAM` | AENAM | — | CHAR | 12 | 0 | Name of Person Who Changed Object |
+| `DEVICE_NBR` | E_DEVICE_NBR | — | CHAR | 1 | 0 | Device Not Relevant for Billing |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `PREISKLA` | EASTL | MANDT | TE431 |  | |
+| `PREISKLA` | EASTL | PREISKLA | TE431 |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_

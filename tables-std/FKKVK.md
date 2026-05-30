@@ -3,12 +3,31 @@
 **Description:** Contract Account — CA master record
 **Category:** Standard SAP Table
 **References:** 214 SELECT statements across 20 programs
+**Source:** [leanx.eu](https://leanx.eu/sap/table/fkkvk/) — validated 2026-05-30, schema v1.0
+**Schema fields:** 9 fields | **Data types:** CHAR(7), DATS(2)
 
 ## Key Fields
-| Field | Type | Key | Description |
-|-------|------|-----|-------------|
-| `MANDT` | | 🔑 | Primary key |
-| `VKONT` | | 🔑 | Primary key |
+
+## Field Definitions (leanx.eu)
+| Field | Data Element | Checktable | Type | Length | Decimals | Description |
+|-------|-------------|------------|------|--------|----------|-------------|
+| `ERDAT` | ERDAT | — | DATS | 8 | 0 | Date on Which Record Was Created |
+| `ERNAM` | ERNAM | — | CHAR | 12 | 0 | Name of Person who Created the Object |
+| `LOEVM` | LOEVM_KK | — | CHAR | 1 | 0 | Mark Contract Account for Deletion |
+| `AEDAT` | AEDAT | — | DATS | 8 | 0 | Changed On |
+| `AENAM` | AENAM | — | CHAR | 12 | 0 | Name of Person Who Changed Object |
+| `APPLK` | APPLK_KK | — | CHAR | 1 | 0 | Application area |
+| `VKTYP` | VKTYP_KK | TFK002A | CHAR | 2 | 0 | Contract Account Category |
+| `VKONA` | VKONA_KK | — | CHAR | 20 | 0 | Contract account number in legacy system |
+| `VKBEZ` | VKBEZ_KK | — | CHAR | 35 | 0 | Contract account name |
+
+## Foreign Key Relationships (leanx.eu)
+| Field | FK Table | FK Field | Check Table | Check Field | Description |
+|-------|----------|----------|-------------|-------------|-------------|
+| `MANDT` | FKKVK | MANDT | T000 |  | |
+| `VKTYP` | FKKVK | MANDT | TFK002A |  | |
+| `VKTYP` | FKKVK | APPLK | TFK002A |  | |
+| `VKTYP` | FKKVK | VKTYP | TFK002A |  | |
 
 ## Detected Join Fields
 _Fields found in JOIN/ON patterns in CCMS code:_
